@@ -1,0 +1,12 @@
+{
+    "score": 0,
+    "tests_passed": 0,
+    "notes": {
+        "test_mean_squared_error": "FAIL",
+        "test_polynomial_regression": "FAIL",
+        "test_generate_regression_data": "FAIL",
+        "test_perceptron": "FAIL",
+        "test_transform_data": "FAIL",
+        "test_netid": "FAIL - REQUIRED (automatic zero)"
+    }
+}
