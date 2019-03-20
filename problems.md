@@ -57,6 +57,15 @@ both of these. Show us the results of the visualization.
 How do the two approaches to visualizations diverge from one another? What can you 
 learn from this?
 
+### Generating handwritten digits (1 point - bonus)
+This section is not necessary but can be completed for an extra point on this assignment. 
+
+To answer this question, you can use the scikit-learn implementation of the Gaussian Mixture Model:
+
+https://scikit-learn.org/stable/modules/generated/sklearn.mixture.GaussianMixture.html
+
+A Gaussian Mixture Model is a *generative* model, meaning that it can not only cluster points but can also generate new points. Pick a digit class from the testing set of MNIST (say 5) and fit a Gaussian Mixture Model to the digit with the 1, 4, 10, and 20 components. Sample 5 images from the fit GMM and show them to us. How does the number of components affect the quality of the sampled images?
+
 
 
 
