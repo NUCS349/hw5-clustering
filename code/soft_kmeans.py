@@ -1,10 +1,4 @@
 import numpy as np
-try:
-    import matplotlib.pyplot as plt
-except:
-    import matplotlib
-    matplotlib.use('Agg')
-    import matplotlib.pyplot as plt
 
 class SoftKMeans():
     def __init__(self, n_clusters, beta=1.0):
