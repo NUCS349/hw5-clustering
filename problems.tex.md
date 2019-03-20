@@ -42,7 +42,7 @@ Report the performance of each of these algorithms using the Adjusted Mutual Inf
 Score (implemented in `code/metrics.py` for you). Which algorithm performed best?
 
 ### Comparing approaches knowing labels (1 point)
-Since we actually DO know the labels of the handwritten digets, we can also consider the accuracy of these unsupervised approaches. For each cluster, find the most common label. Call that the label of the cluster. Find the proportion of images whose label does not match their cluster label. That's the error. Report the performance of each of these algorithms using this measure. Which algorithm performed best? Is this the same one that did best with Adjusted Mutual Information Score?
+Since we actually DO know the labels of the handwritten digits, we can also consider the accuracy of these unsupervised approaches. For each cluster, find the most common label. Call that the label of the cluster. Find the proportion of images whose label does not match their cluster label. That's the error. Report the performance of each of these algorithms using this measure. Which algorithm performed best? Is this the same one that did best with Adjusted Mutual Information Score?
 
 ### Visualization (1 point)
 Clustering can be visualized in two ways: 
