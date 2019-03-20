@@ -1,66 +1,65 @@
 ## Problems
 
 ## Code implementation (5 points)
-Pass test cases by implementing the functions in the `code` directory.
+Pass test cases by implementing the functions in the `code` directory. You are to 
+implement KMeans, Soft K-Means, and Gaussian Mixture Models, and apply them to
+various datasets in thie assignment.
 
 Your grade for this section is defined by the autograder. If it says you got an 80/100,
 you get 4 points here.
 
-## Free response questions (5 points)
+## Free response questions (3 points)
 
-Answer the following free response questions in a separate document, 
-saved as a .pdf and **uploaded to Canvas**.
+1. Explain the relationship between Soft KMeans and Gaussian Mixture Models. Show the 
+   relationship using the math of Soft KMeans vs the math of GMMs. What types of data can
+   GMMs model that KMeans and Soft KMeans cannot?
+2. What happens as beta in soft KMeans approaches infinity? How does this relate to 
+   regular KMeans?
+3. What distance measure do KMeans, Soft KMeans, and GMMs implicitly use for clustering?
+   What limitations does this place on the types of data these algorithms can cluster?
+4. Examine and plot the data contained in `data/circles.json`. Attempt to cluster this data
+   using KMeans, Soft KMeans, and GMM. Plot and show the results of each clustering algorithm.
+   Explain the performance of each algorithm on this data. If it did not work, explain why. 
+   How could the data be transformed such that these approaches can cluster the data?
 
-### Polynomial regression (2 points)
+## Clustering handwritten digits (2 points)
 
-First, we will run experiments on the `PolynomialRegression` code you wrote.
+For this, we will attempt to cluster handwritten digits contained in the MNIST dataset.
+Download the MNIST dataset:
 
-Generate random data (via the function you implemented `generate_regression_data`) 
-and perform regression on it with the class `PolynomialRegression` that you
-implemented. Generate data of varying degrees, from 1 to 10. For each generated
-dataset (.1 points each):
+http://yann.lecun.com/exdb/mnist/
 
-1. Show a scatter plot of each dataset. Indicate its degree in the title of the plot.
-2. Plot the polynomial of that degree on top of the scatter plot found by your implementation of 
-`PolynomialRegression`.
-3. Try all polynomials of degree 1:10 on the dataset. Show a plot of mean squared error as a 
-function of degree.
+Download the testing set (images and labels): 
 
-In the plots of mean squared error vs degree, what patterns do you notice? Specifically
-in relation to the actual degree polynomial used to generate the dataset. Explain why
-using the highest degree polynomial possible may or may not be a good idea. Put your
-answer in terms of *bias* and *variance* (1 point):
+- images: http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
+- labels: http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
 
-https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff
+The goal is to cluster the images based on the input representation. Each image in 
+MNIST has dimensionality 28x28. We will flatten this representation such that each image
+is mapped to a 784-dimensional vector (28*28), where each element of the vector is the 
+intensity of the corresponding pixel in the image. Cluster these vectors into 10 clusters
+using the following algorithms:
 
-### Perceptron (2 points)
+- KMeans
+- Soft KMeans
+- Gaussian Mixture Model
 
-The following datasets are provided:
+### Comparing approaches (1 point)
+Report the performance of each of these algorithms using the Adjusted Mutual Information
+Score (implemented in `code/metrics.py` for you). Which algorithm performed best?
 
-```
-data/blobs.json
-data/circles.json
-data/crossing.json
-data/parallel_lines.json
-data/transform_me.json
-```
+### Visualization (1 point)
+Clustering can be visualized in two ways: 
 
-Note that you can upload these files to the website http://ml-playground.com/. This
-website will let you see how different learning algorithms work on each dataset. This
-is not required for points but might be illuminating and useful for checking your work!
+1. Finding the image in the data that is closest to each mean.
+2. Taking the mean of all the images that are assigned to a single cluster.
 
-For each of these 5 datasets (.2 points each):
+For the best performing algorithm in the previous section (comparing approaches), do
+both of these. Show us the results of the visualization. 
+How do the two approaches to visualizations diverge from one another? What can you 
+learn from this?
 
-1. Show a scatter plot of the data with each point colored according to its class.
-   1. See load_json_data for code example.
-2. Draw the linear separator learned by your perceptron on top of the scatter plot.
-   1. Not all of the datasets will be separable, so this plot may look odd.
-3. Did your perceptron work on the dataset? Why or why not? 
 
-For the dataset `data/transform_me.json` (1 point):
-1. Make sure the relevant test case in the function `transform_data` in `code/perceptron.py` passes.
-2. Show two scatter plots of the data before transformation and after transformation.
-3. Why did the transformation you implemented work?
-4. Read about the kernel method (sometimes called the kernel trick):
-   1. https://en.wikipedia.org/wiki/Kernel_method
-5. Explain how the transformation you implemented relates to the kernel trick.
+
+
+
