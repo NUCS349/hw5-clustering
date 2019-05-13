@@ -18,7 +18,7 @@ def test_generate_cluster_data():
                     )
 
                     assert (X.shape == (n, f))
-                    assert (y.max() == c)
+                    assert (y.max() == c - 1)
 
                     for i in range(y.max()):
                         subset = X[y == i]
