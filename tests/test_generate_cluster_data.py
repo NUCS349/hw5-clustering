@@ -14,7 +14,7 @@ def test_generate_cluster_data():
                         n_samples=n,
                         n_features=f,
                         n_centers=c,
-                        stds=s
+                        cluster_stds=s
                     )
 
                     assert (X.shape == (n_samples, n_features))
