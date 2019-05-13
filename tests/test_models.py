@@ -13,7 +13,6 @@ def test_kmeans():
     for data_path in datasets:
         # Load data and make sure its shape is correct
         features, targets = load_json_data(data_path)
-        targets = targets[:, None]  # expand dims
         # make model and fit
         model = KMeans(2)
         model.fit(features)
@@ -27,7 +26,6 @@ def test_soft_kmeans():
     for data_path in datasets:
         # Load data and make sure its shape is correct
         features, targets = load_json_data(data_path)
-        targets = targets[:, None]  # expand dims
         # make model and fit
         model = SoftKMeans(2)
         model.fit(features)
@@ -42,7 +40,6 @@ def test_gmm():
     for data_path in datasets:
         # Load data and make sure its shape is correct
         features, targets = load_json_data(data_path)
-        targets = targets[:, None]  # expand dims
         # make model and fit
         for covariance_type in ['full', 'tied', 'spherical', 'diagonal']:
             model = GMM(2, covariance_type)
