@@ -7,29 +7,20 @@
         "weight": "required",
         "depends": []
     },
-    "test_mean_squared_error": {
+    "test_generate_cluster_data": {
         "weight": 1,
         "depends": []
     },
-    "test_generate_regression_data": {
+    "test_kmeans": {
         "weight": 1,
         "depends": []
     },
-    "test_polynomial_regression": {
-        "weight": 1,
-        "depends": [
-            "test_generate_regression_data",
-            "test_mean_squared_error"
-        ]
-    },
-    "test_perceptron": {
+    "test_gmm": {
         "weight": 1,
         "depends": []
     },
-    "test_transform_data": {
+    "test_soft_kmeans": {
         "weight": 1,
-        "depends": [
-            "test_perceptron"
-        ]
+        "depends": []
     }
 }

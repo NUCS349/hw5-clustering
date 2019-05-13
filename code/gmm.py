@@ -1,7 +1,7 @@
 import numpy as np
 
 class GMM():
-    def __init__(self, n_clusters):
+    def __init__(self, n_clusters, covariance_type):
         """
         This class implements a Gaussian Mixture Model updated using expectation
         maximization.
@@ -21,9 +21,14 @@ class GMM():
 
         Args:
             n_clusters (int): Number of Gaussians to cluster the given data into.
+            covariance_type (str): Either 'tied', 'full', 'spherical', 'diagonal'
 
         """
         self.n_clusters = n_clusters
+        allowed_covariance_types = ['tied', 'full', 'spherical', 'diagonal']
+        if covariance_type not in allowed_covariance_types:
+            raise ValueError(f'covariance_type must be in {allowed_covariance_type}')
+        self.covariance_type = covariance_type
         raise NotImplementedError()
 
     def fit(self, features):
