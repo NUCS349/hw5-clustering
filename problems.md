@@ -1,66 +1,74 @@
 ## Problems
 
 ## Code implementation (5 points)
-Pass test cases by implementing the functions in the `code` directory.
+Pass test cases by implementing the functions in the `code` directory. You are to 
+implement KMeans, Soft K-Means, and Gaussian Mixture Models, and apply them to
+various datasets in thie assignment.
 
 Your grade for this section is defined by the autograder. If it says you got an 80/100,
 you get 4 points here.
 
-## Free response questions (5 points)
+## Free response questions (2 points, 1 point per question)
 
-Answer the following free response questions in a separate document, 
-saved as a .pdf and **uploaded to Canvas**.
+1. What happens as beta in soft K-Means approaches infinity? How does this relate to 
+   regular K-Means?
 
-### Polynomial regression (2 points)
+2. Draw a data distribution that would be better modeled using a GMM x than with soft K-Means. Explain why this is so. (Hint: think about the covariance matrix)
+         
+## Clustering handwritten digits (3 points, total)
 
-First, we will run experiments on the `PolynomialRegression` code you wrote.
+For this, we will attempt to cluster handwritten digits contained in the MNIST dataset.
+Download the MNIST dataset:
 
-Generate random data (via the function you implemented `generate_regression_data`) 
-and perform regression on it with the class `PolynomialRegression` that you
-implemented. Generate data of varying degrees, from 1 to 10. For each generated
-dataset (.1 points each):
+http://yann.lecun.com/exdb/mnist/
 
-1. Show a scatter plot of each dataset. Indicate its degree in the title of the plot.
-2. Plot the polynomial of that degree on top of the scatter plot found by your implementation of 
-`PolynomialRegression`.
-3. Try all polynomials of degree 1:10 on the dataset. Show a plot of mean squared error as a 
-function of degree.
+Download the testing set (images and labels): 
 
-In the plots of mean squared error vs degree, what patterns do you notice? Specifically
-in relation to the actual degree polynomial used to generate the dataset. Explain why
-using the highest degree polynomial possible may or may not be a good idea. Put your
-answer in terms of *bias* and *variance* (1 point):
+- images: http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
+- labels: http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
 
-https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff
+The goal is to cluster the images based on the input representation. Each image in 
+MNIST has dimensionality 28x28. We will flatten this representation such that each image
+is mapped to a 784-dimensional vector (28*28), where each element of the vector is the 
+intensity of the corresponding pixel in the image. Cluster these vectors into 10 clusters
+using the following algorithms:
 
-### Perceptron (2 points)
+- KMeans
+- Soft KMeans
+- Gaussian Mixture Model
 
-The following datasets are provided:
+### Comparing approaches without knowing labels (1 point)
+Report the performance of each of these algorithms using the Adjusted Mutual Information
+Score (implemented in `code/metrics.py` for you). Which algorithm performed best?
 
-```
-data/blobs.json
-data/circles.json
-data/crossing.json
-data/parallel_lines.json
-data/transform_me.json
-```
+### Comparing approaches knowing labels (1 point)
+Since we actually DO know the labels of the handwritten digits, we can also consider the accuracy of these unsupervised approaches. For each cluster, find the most common label. Call that the label of the cluster. Find the proportion of images whose label matches their cluster label. That's the accuracy. Report the performance of each of these algorithms using this measure. Which algorithm performed best? Is this the same one that did best with Adjusted Mutual Information Score?
 
-Note that you can upload these files to the website http://ml-playground.com/. This
-website will let you see how different learning algorithms work on each dataset. This
-is not required for points but might be illuminating and useful for checking your work!
+### Visualization (1 point)
+Clustering can be visualized in two ways: 
 
-For each of these 5 datasets (.2 points each):
+1. Finding the image in the data that is closest to each mean.
+2. Taking the mean of all the images that are assigned to a single cluster.
 
-1. Show a scatter plot of the data with each point colored according to its class.
-   1. See load_json_data for code example.
-2. Draw the linear separator learned by your perceptron on top of the scatter plot.
-   1. Not all of the datasets will be separable, so this plot may look odd.
-3. Did your perceptron work on the dataset? Why or why not? 
+For the best performing algorithm, according to Adjusted Mutual Information
+Score, do
+both of these. Show us the results of the visualization.
 
-For the dataset `data/transform_me.json` (1 point):
-1. Make sure the relevant test case in the function `transform_data` in `code/perceptron.py` passes.
-2. Show two scatter plots of the data before transformation and after transformation.
-3. Why did the transformation you implemented work?
-4. Read about the kernel method (sometimes called the kernel trick):
-   1. https://en.wikipedia.org/wiki/Kernel_method
-5. Explain how the transformation you implemented relates to the kernel trick.
+How do the two approaches to visualizations diverge from one another? What can you 
+learn from this?
+
+### Generating handwritten digits (1 point - bonus)
+This section is not necessary but can be completed for an extra point on this assignment. 
+
+To answer this question, you can use the scikit-learn implementation of the Gaussian Mixture Model:
+
+https://scikit-learn.org/stable/modules/generated/sklearn.mixture.GaussianMixture.html
+
+A Gaussian Mixture Model is a *generative* model, meaning that it can not only cluster points but can also generate new points. Pick a digit class from the testing set of MNIST (say 5) and fit a Gaussian Mixture Model to the digit with the 1, 4, 10, and 20 components. Sample 5 images from the fit GMM and show them to us. How does the number of components affect the quality of the sampled images?
+
+
+
+
+
+
+
