@@ -23,4 +23,4 @@ def test_generate_cluster_data():
 
                     for i in range(y.max()):
                         subset = X[y == i]
-                        assert (np.std(subset) - s < 1e-2)
+                        assert (np.abs(np.std(subset) - s) < 1e-1)
