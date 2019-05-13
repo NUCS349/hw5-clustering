@@ -17,7 +17,7 @@ def test_generate_cluster_data():
                         cluster_stds=s
                     )
 
-                    assert (X.shape == (n_samples, n_features))
+                    assert (X.shape == (n, f))
                     assert (y.max() == c)
 
                     for i in range(y.max()):
