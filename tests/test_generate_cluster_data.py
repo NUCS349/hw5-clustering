@@ -2,7 +2,7 @@ import numpy as np
 from code import generate_cluster_data
 
 def test_generate_cluster_data():
-    n_samples = [1000, 10000]
+    n_samples = [50000, 100000]
     n_centers = [1, 2, 4, 8]
     stds = [.1, .5, 1.0, 2.0]
     n_features = [1, 2, 4]
