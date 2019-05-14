@@ -17,7 +17,7 @@ class GMM():
         test cases, we recommend that you break these two steps apart into separate
         functions.
 
-        Use only numpy to implement this algorithm. 
+        Use only numpy to implement this algorithm.
 
         Args:
             n_clusters (int): Number of Gaussians to cluster the given data into.
@@ -25,19 +25,19 @@ class GMM():
 
         """
         self.n_clusters = n_clusters
-        allowed_covariance_types = ['tied', 'full', 'spherical', 'diagonal']
+        allowed_covariance_types = ['spherical', 'diagonal']
         if covariance_type not in allowed_covariance_types:
-            raise ValueError(f'covariance_type must be in {allowed_covariance_type}')
+            raise ValueError(f'covariance_type must be in {allowed_covariance_types}')
         self.covariance_type = covariance_type
         raise NotImplementedError()
 
     def fit(self, features):
         """
         Fit GMM to the given data using `self.n_clusters` number of Gaussians.
-        Features can have greater than 2 dimensions. 
+        Features can have greater than 2 dimensions.
 
         Args:
-            features (np.ndarray): array containing inputs of size 
+            features (np.ndarray): array containing inputs of size
                 (n_samples, n_features).
         Returns:
             None (saves model - means - internally)
@@ -46,11 +46,11 @@ class GMM():
 
     def predict(self, features):
         """
-        Given features, an np.ndarray of size (n_samples, n_features), predict membership 
+        Given features, an np.ndarray of size (n_samples, n_features), predict membership
         to each Gaussian.
 
         Args:
-            features (np.ndarray): array containing inputs of size 
+            features (np.ndarray): array containing inputs of size
                 (n_samples, n_features).
         Returns:
             predictions (np.ndarray): predicted assigment to each cluster for each sample,

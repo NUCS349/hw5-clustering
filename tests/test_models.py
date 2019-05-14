@@ -41,7 +41,7 @@ def test_gmm():
         # Load data and make sure its shape is correct
         features, targets = load_json_data(data_path)
         # make model and fit
-        for covariance_type in ['full', 'tied', 'spherical', 'diagonal']:
+        for covariance_type in ['spherical', 'diagonal']:
             model = GMM(2, covariance_type)
             model.fit(features)
 
