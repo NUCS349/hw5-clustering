@@ -11,12 +11,10 @@ you get 4 points here.
 Suggested order for passing test cases:
 1. test_kmeans_spec
 2. test_kmeans_on_generated
-3. test_kmeans_on_files
 4. test_gmm_spec
 5. test_gmm_likelihood
 6. test_gmm_spherical_on_generated
 7. test_gmm_diagonal_on_generated
-8. test_gmm_on_files
 
 ## Free response questions (2 points, 1 point per question)
 
