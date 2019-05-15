@@ -80,7 +80,7 @@ def test_gmm_likelihood():
         scipy_prob = multivariate_normal.logpdf(
             features, means[k], covariances[k]
         )
-        gmm_prob = gmm._log_conditional(features, k)
+        gmm_prob = gmm._log_likelihood(features, k)
         assert np.allclose(scipy_prob, gmm_prob)
 
 
