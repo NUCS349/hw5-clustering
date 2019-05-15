@@ -44,7 +44,6 @@ intensity of the corresponding pixel in the image. Cluster these vectors into 10
 using the following algorithms:
 
 - KMeans
-- Soft KMeans
 - Gaussian Mixture Model
 
 ### Comparing approaches without knowing labels (1 point)
