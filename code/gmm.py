@@ -8,11 +8,11 @@ class GMM():
         This class implements a Gaussian Mixture Model updated using expectation
         maximization.
 
-        A useful tutorial: 
+        A useful tutorial:
             http://cal.cs.illinois.edu/~johannes/research/EM%20derivations.pdf
 
         The EM algorithm for GMMs has two steps:
- 
+
         1. Update posteriors (assignments to each Gaussian)
         2. Update Gaussian parameters (means, variances, and priors for each Gaussian)
 
@@ -22,11 +22,11 @@ class GMM():
 
         Use only numpy to implement this algorithm.
 
-        This function MUST, after running 'fit', have variables named 'means' and 
-        'covariances' in order to pass the test cases. These variables are checked by the 
-        test cases to make sure you have recovered cluster parameters accurately. 
+        This function MUST, after running 'fit', have variables named 'means' and
+        'covariances' in order to pass the test cases. These variables are checked by the
+        test cases to make sure you have recovered cluster parameters accurately.
 
-        The fit and predict functions are implemented for you. To complete the implementation, 
+        The fit and predict functions are implemented for you. To complete the implementation,
         you must implement:
             - _e_step
             - _m_step
@@ -34,7 +34,7 @@ class GMM():
 
         Args:
             n_clusters (int): Number of Gaussians to cluster the given data into.
-            covariance_type (str): Either 'spherical', 'diagonal'. Determines the 
+            covariance_type (str): Either 'spherical', 'diagonal'. Determines the
                 covariance type for the Gaussians in the mixture model.
 
         """
@@ -58,7 +58,7 @@ class GMM():
             features (np.ndarray): array containing inputs of size
                 (n_samples, n_features).
         Returns:
-            None (saves model - means - internally)
+            None (saves model - means, covariances, and mixing weights - internally)
         """
         # 1. Use your KMeans implementation to initialize the means of the GMM.
         kmeans = KMeans(self.n_clusters)
@@ -86,7 +86,7 @@ class GMM():
             self.means, self.covariances, self.mixing_weights = (
                 self._m_step(features, assignments)
             )
-            
+
             log_likelihood = self._overall_log_likelihood(features)
             n_iter += 1
 
@@ -108,18 +108,18 @@ class GMM():
 
     def _e_step(self, features):
         """
-        The expectation step in Expectation-Maximization. Given the current class member 
+        The expectation step in Expectation-Maximization. Given the current class member
         variables self.mean, self.covariance, and self.mixing_weights:
             1. Calculate the log_likelihood of each point under each Gaussian.
             2. Calculate the posterior probability for each point under each Gaussian
             3. Return the posterior probability (assignments).
-        
+
         Arguments:
             features {np.ndarray} -- Features to apply means, covariance, and mixing_weights
                 to.
-        
+
         Returns:
-            np.ndarray -- Posterior probabilities to each Gaussian (size is 
+            np.ndarray -- Posterior probabilities to each Gaussian (size is
                 (features.shape[0], self.n_clusters))
         """
         raise NotImplementedError()
@@ -129,13 +129,13 @@ class GMM():
         Maximization step in Expectation-Maximization. Given the current features and
         assignments, update self.means, self.covariances, and self.mixing_weights. Here,
         you implement the update equations for the means, covariances, and mixing weights.
-        
+
         Arguments:
             features {np.ndarray} -- Features to update means and covariances, given the
                 current assignments.
             assignments {np.ndarray} -- Soft assignments of each point to one of the cluster,
                 given by _e_step.
-        
+
         Returns:
             means -- Updated means
             covariances -- Updated covariances
@@ -148,10 +148,10 @@ class GMM():
         Initialize the covariance matrix given the covariance_type (spherical or
         diagonal). If spherical, each feature is treated the same (has equal covariance).
         If diagonal, each feature is treated independently (n_features covariances).
-        
+
         Arguments:
             n_features {int} -- Number of features in the data for clustering
-        
+
         Returns:
             [np.ndarray] -- Initial covariances (use np.random.rand)
         """
@@ -179,15 +179,15 @@ class GMM():
             log(mixing_weight) + logpdf
 
         Where logpdf is the output of multivariate_normal.
-        
+
         Arguments:
-            features {np.ndarray} -- Features to compute multivariate_normal distribution 
+            features {np.ndarray} -- Features to compute multivariate_normal distribution
                 on.
             k_idx {int} -- Which Gaussian to use.
-        
+
         Returns:
             np.ndarray -- log likelihoods of each feature given a Gaussian.
-        """       
+        """
         raise NotImplementedError()
 
     def _overall_log_likelihood(self, features):
@@ -203,14 +203,14 @@ class GMM():
         to iterate over this function. This function is implemented for you because the
         numerical issues can be tricky. We use the logsumexp trick to make it work (see
         below).
-        
+
         Arguments:
             features {np.ndarray} -- Numpy array containing data (n_samples, n_features).
             k {int} -- Index of which Gaussian to compute posteriors for.
-        
+
         Returns:
             np.ndarray -- Posterior probabilities for the selected Gaussian k, of size
-                (n_samples,). 
+                (n_samples,).
         """
         num = self._log_likelihood(features, k)
         denom = np.array([

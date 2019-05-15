@@ -62,7 +62,7 @@ def test_kmeans_spec():
                     )
     model = KMeans(2)
     model.fit(features)
-    
+
     assert (hasattr(model, 'means'))
 
 def test_gmm_likelihood():
@@ -119,30 +119,3 @@ def test_gmm_spherical_on_generated():
 
 def test_gmm_diagonal_on_generated():
     _test_gmm_covariance('diagonal')
-
-def test_kmeans_on_files():
-    for data_path in datasets:
-        # Load data and make sure its shape is correct
-        features, targets = load_json_data(data_path)
-        # make model and fit
-        model = KMeans(2)
-        model.fit(features)
-
-        # predict and calculate adjusted mutual info
-        labels = model.predict(features)
-        acc = adjusted_mutual_info(targets, labels)
-        assert (acc == 1.0)
-
-def test_gmm_on_files():
-    for data_path in datasets:
-        # Load data and make sure its shape is correct
-        features, targets = load_json_data(data_path)
-        # make model and fit
-        for covariance_type in ['spherical', 'diagonal']:
-            model = GMM(2, covariance_type)
-            model.fit(features)
-
-            # predict and calculate adjusted mutual info
-            labels = model.predict(features)
-            acc = adjusted_mutual_info(targets, labels)
-            assert (acc == 1.0)
