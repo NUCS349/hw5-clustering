@@ -2,11 +2,21 @@
 
 ## Code implementation (5 points)
 Pass test cases by implementing the functions in the `code` directory. You are to 
-implement KMeans, Soft K-Means, and Gaussian Mixture Models, and apply them to
-various datasets in thie assignment.
+implement KMeans and Gaussian Mixture Models, and apply them to
+various datasets in this assignment.
 
 Your grade for this section is defined by the autograder. If it says you got an 80/100,
-you get 4 points here.
+you get 4 points here. 
+
+Suggested order for passing test cases:
+1. test_kmeans_spec
+2. test_kmeans_on_generated
+3. test_kmeans_on_files
+4. test_gmm_spec
+5. test_gmm_likelihood
+6. test_gmm_spherical_on_generated
+7. test_gmm_diagonal_on_generated
+8. test_gmm_on_files
 
 ## Free response questions (2 points, 1 point per question)
 

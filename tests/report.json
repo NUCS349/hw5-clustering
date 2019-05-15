@@ -2,10 +2,6 @@
     "score": 0,
     "tests_passed": 0,
     "notes": {
-        "test_netid": "FAIL",
-        "test_generate_cluster_data": "FAIL",
-        "test_kmeans": "FAIL",
-        "test_soft_kmeans": "FAIL",
-        "test_gmm": "FAIL"
+        "test_netid": "FAIL - REQUIRED (automatic zero)"
     }
 }
