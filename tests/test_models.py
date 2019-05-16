@@ -8,12 +8,6 @@ from scipy.stats import multivariate_normal
 np.random.seed(0)
 random.seed(0)
 
-datasets = [
-        os.path.join('data', x)
-        for x in os.listdir('data')
-        if os.path.splitext(x)[-1] == '.json'
-    ]
-
 def test_kmeans_on_generated():
     n_samples = [1000, 10000]
     n_centers = [2]
