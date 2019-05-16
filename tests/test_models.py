@@ -44,7 +44,7 @@ def test_kmeans_on_generated():
                             np.abs(_means - actual_means).sum()
                         )
                     
-                    assert (min(distance_to_true_means) < 1e-2)
+                    assert (min(distance_to_true_means) < 1e-1)
 
                     # predict and calculate adjusted mutual info
                     labels = model.predict(features)
@@ -132,7 +132,7 @@ def _test_gmm_parameters(covariance_type):
                         distance_to_true_means.append(
                             np.abs(_means - actual_means).sum()
                         )
-                    assert (min(distance_to_true_means) < 1e-2)
+                    assert (min(distance_to_true_means) < 1e-1)
 
                     mixing_weights = model.mixing_weights
                     orderings = permutations(mixing_weights)
@@ -149,7 +149,7 @@ def _test_gmm_parameters(covariance_type):
                         distance_to_true_mixing_weights.append(
                             np.abs(_mixing_weights - actual_mixing_weights).sum()
                         )
-                    assert (min(distance_to_true_mixing_weights) < 1e-2)
+                    assert (min(distance_to_true_mixing_weights) < 1e-1)
 
                     # predict and calculate adjusted mutual info
                     labels = model.predict(features)
