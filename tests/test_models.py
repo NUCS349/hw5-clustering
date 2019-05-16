@@ -4,6 +4,7 @@ from code import load_json_data, adjusted_mutual_info, generate_cluster_data
 import os
 import random
 from scipy.stats import multivariate_normal
+from itertools import permutations
 
 np.random.seed(0)
 random.seed(0)
@@ -27,6 +28,23 @@ def test_kmeans_on_generated():
                     # make model and fit
                     model = KMeans(c)
                     model.fit(features)
+
+                    means = model.means
+                    orderings = permutations(means)
+                    distance_to_true_means = []
+
+                    actual_means = np.array([
+                        features[targets == i, :].mean(axis=0) for i in range(targets.max() + 1)
+                    ])
+                    
+                    for ordering in orderings:
+                        _means = np.array(list(ordering))
+                        
+                        distance_to_true_means.append(
+                            np.abs(_means - actual_means).sum()
+                        )
+                    
+                    assert (min(distance_to_true_means) < 1e-2)
 
                     # predict and calculate adjusted mutual info
                     labels = model.predict(features)
@@ -56,7 +74,6 @@ def test_kmeans_spec():
                     )
     model = KMeans(2)
     model.fit(features)
-
     assert (hasattr(model, 'means'))
 
 def test_gmm_likelihood():
@@ -78,7 +95,7 @@ def test_gmm_likelihood():
         assert np.allclose(scipy_prob, gmm_prob)
 
 
-def _test_gmm_covariance(covariance_type):
+def _test_gmm_parameters(covariance_type):
     n_samples = [1000]
     n_centers = [2]
     stds = [.1]
@@ -96,11 +113,43 @@ def _test_gmm_covariance(covariance_type):
                     )
                     # make model and fit
                     model = GMM(c, covariance_type=covariance_type)
-                    print()
                     model.fit(features)
                     covariances = model.covariances
                     for cov in covariances:
                         assert (np.abs(np.sqrt(cov) - s).mean() < 1e-1)
+
+                    means = model.means
+                    orderings = permutations(means)
+                    distance_to_true_means = []
+
+                    actual_means = np.array([
+                        features[targets == i, :].mean(axis=0) for i in range(targets.max() + 1)
+                    ])
+
+                    for ordering in orderings:
+                        _means = np.array(list(ordering))
+                        
+                        distance_to_true_means.append(
+                            np.abs(_means - actual_means).sum()
+                        )
+                    assert (min(distance_to_true_means) < 1e-2)
+
+                    mixing_weights = model.mixing_weights
+                    orderings = permutations(mixing_weights)
+                    distance_to_true_mixing_weights = []
+
+                    actual_mixing_weights = np.array([
+                        features[targets == i, :].shape[0] for i in range(targets.max() + 1)
+                    ])
+                    actual_mixing_weights = actual_mixing_weights / actual_mixing_weights.sum()
+
+                    for ordering in orderings:
+                        _mixing_weights = np.array(list(ordering))
+                        
+                        distance_to_true_mixing_weights.append(
+                            np.abs(_mixing_weights - actual_mixing_weights).sum()
+                        )
+                    assert (min(distance_to_true_mixing_weights) < 1e-2)
 
                     # predict and calculate adjusted mutual info
                     labels = model.predict(features)
@@ -109,7 +158,7 @@ def _test_gmm_covariance(covariance_type):
 
 
 def test_gmm_spherical_on_generated():
-    _test_gmm_covariance('spherical')
+    _test_gmm_parameters('spherical')
 
 def test_gmm_diagonal_on_generated():
-    _test_gmm_covariance('diagonal')
+    _test_gmm_parameters('diagonal')
