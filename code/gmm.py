@@ -115,7 +115,7 @@ class GMM():
             3. Return the posterior probability (assignments).
         
         This function should call your implementation of _log_likelihood (which should call
-        multvariate_normal.pdf). This should use the Gaussian parameter contained in
+        multvariate_normal.logpdf). This should use the Gaussian parameter contained in
         self.means, self.covariance, and self.mixing_weights
 
         Arguments:
