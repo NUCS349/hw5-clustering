@@ -115,14 +115,15 @@ class GMM():
             3. Return the posterior probability (assignments).
         
         This function should call your implementation of _log_likelihood (which should call
-        multvariate_normal.pdf). 
+        multvariate_normal.pdf). This should use the Gaussian parameter contained in
+        self.means, self.covariance, and self.mixing_weights
 
         Arguments:
             features {np.ndarray} -- Features to apply means, covariance, and mixing_weights
                 to.
 
         Returns:
-            np.ndarray -- Posterior probabilities to each Gaussian (size is
+            np.ndarray -- Posterior probabilities to each Gaussian (shape is
                 (features.shape[0], self.n_clusters))
         """
         raise NotImplementedError()
@@ -196,7 +197,8 @@ class GMM():
         Arguments:
             features {np.ndarray} -- Features to compute multivariate_normal distribution
                 on.
-            k_idx {int} -- Which Gaussian to use.
+            k_idx {int} -- Which Gaussian to use (e.g. use self.means[k_idx], 
+                self.covariances[k_idx], self.mixing_weights[k_idx]).
 
         Returns:
             np.ndarray -- log likelihoods of each feature given a Gaussian.
