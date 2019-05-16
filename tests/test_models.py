@@ -98,7 +98,7 @@ def test_gmm_likelihood():
 def _test_gmm_parameters(covariance_type):
     n_samples = [1000]
     n_centers = [2]
-    stds = [.1]
+    stds = [.1, .5]
     n_features = [2, 4]
 
     for n in n_samples:
