@@ -1,4 +1,4 @@
-# HW6: KMeans and GMM - EECS 349 @ NU
+# HW6: Clustering - EECS 349 @ NU
 **IMPORTANT: PUT YOUR NETID IN THE FILE** `netid` in the root directory of the assignment. 
 This is used to put the autograder output into Canvas. Please don't put someone else's netid 
 here, we will check.
@@ -32,9 +32,10 @@ Make a conda environment for this assignment and then run:
 
 The test cases can be run with:
 
-``python -m pytest``
+``python -W ignore -m pytest -s .``
 
-at the root directory of the assignment repository.
+at the root directory of the assignment repository.  NOTE: this command is slightly changed
+to suppress warnings that come from scikit-learn when we use adjusted_mutual_info.
 
 ## Questions? Problems? Issues?
 
