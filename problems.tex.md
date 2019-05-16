@@ -31,8 +31,8 @@ we can measure our performance directly on the dataset we used to train. For tha
 
 Download the test partition of the MNIST dataset from the following links:
 
--[images](http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz)
--[labels](http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz)
+- [images](http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz)
+- [labels](http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz)
 
 Use the data loader found in `code/mnist.py` to load the MNIST test images and labels.
 
