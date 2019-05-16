@@ -21,7 +21,7 @@ Suggested order for passing test cases:
 1. What happens as beta in soft K-Means approaches infinity? How does this relate to
    regular K-Means?
 
-2. Draw a data distribution using [ml-playground(http://ml-playground.com/) that would be better modeled using a GMM x than with soft K-Means. Explain why this is so. Include the plot you made in ML playground. (Hint: think about the covariance matrix)
+2. Draw a data distribution using [ml-playground](http://ml-playground.com/) that would be better modeled using a GMM x than with soft K-Means. Explain why this is so. Include the plot you made in ML playground. (Hint: think about the covariance matrix)
 
 ## Clustering handwritten digits (3 points, total)
 
