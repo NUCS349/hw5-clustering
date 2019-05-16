@@ -30,7 +30,8 @@ Because we do not use the labels themselves during training of KMeans or GMMs (i
 we can measure our performance directly on the dataset we used to train. For that reason, we will work only with the test partition of the MNIST dataset on this portion of the assignment.
 
 Download the test partition of the MNIST dataset from the following links:
- -[images](http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz)
+
+-[images](http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz)
 -[labels](http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz)
 
 Use the data loader found in `code/mnist.py` to load the MNIST test images and labels.
