@@ -94,7 +94,7 @@ class GMM():
         """
         Given features, an np.ndarray of size (n_samples, n_features), predict the label
         of each sample (e.g. the index of the Gaussian with the highest posterior for that
-        sample). Hint: use np.argmax to do this.
+        sample).
 
         Args:
             features (np.ndarray): array containing inputs of size
@@ -113,6 +113,9 @@ class GMM():
             1. Calculate the log_likelihood of each point under each Gaussian.
             2. Calculate the posterior probability for each point under each Gaussian
             3. Return the posterior probability (assignments).
+        
+        This function should call your implementation of _log_likelihood (which should call
+        multvariate_normal.pdf). 
 
         Arguments:
             features {np.ndarray} -- Features to apply means, covariance, and mixing_weights
@@ -129,6 +132,16 @@ class GMM():
         Maximization step in Expectation-Maximization. Given the current features and
         assignments, update self.means, self.covariances, and self.mixing_weights. Here,
         you implement the update equations for the means, covariances, and mixing weights.
+            1. Update the means with the mu_j update in Slide 24.
+            2. Update the mixing_weights with the w_j update in Slide 24
+            3. Update the covariance matrix with the sigma_j update in Slide 24.
+
+        Slide 24 is in these slides: 
+            https://github.com/NUCS349/nucs349.github.io/blob/master/lectures/eecs349_gaussian_mixture_models.pdf
+
+        NOTE: When updating the parameters of the Gaussian you always use the output of
+        the E step taken before this M step (e.g. update the means, mixing_weights, and covariances 
+        simultaneously).
 
         Arguments:
             features {np.ndarray} -- Features to update means and covariances, given the

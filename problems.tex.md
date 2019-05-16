@@ -37,7 +37,7 @@ Use the data loader found in `code/mnist.py` to load the MNIST test images and l
 
 Rather than training on the entire test partition, we will use a _class-balanced_ partition of the test set (i.e., we will use an equal number of examples from each class).
 Find the digit that has the fewest examples in the MNIST test dataset. Let the number of examples of this digit in the MNIST test dataset be _n_.
-Randomly sample _n_ examples from each digit in the MNISt test dataset without replacement. This will be the subset of examples that we will use in our experiments.
+Randomly sample _n_ examples from each digit in the MNIST test dataset without replacement. This will be the subset of examples that we will use in our experiments.
 
 Now you will test your clustering algorithms on this class-balanced partition.
 Each image in MNIST has dimensionality 28x28. Flatten this representation such that each image
@@ -47,6 +47,12 @@ using the following algorithms:
 
 - KMeans
 - Gaussian Mixture Model
+
+NOTE: IF YOUR IMPLEMENTATION OF GMM/KMEANS IS TOO SLOW FOR THESE EXPERIMENTS (OR YOUR IMPLEMENTATION 
+DOESN'T WORK), YOU MAY USE THE IMPLEMENTATION CONTAINED IN SCIKIT-LEARN TO SOLVE THE FREE RESPONSE: 
+
+https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
+https://scikit-learn.org/stable/modules/generated/sklearn.mixture.GaussianMixture.html
 
 ### Comparing approaches without labels (1 point)
 Report the performance of each of these algorithms using the Adjusted Mutual Information
