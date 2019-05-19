@@ -10,12 +10,9 @@ def generate_cluster_data(
     """
     Generate numpy arrays that are clusterable into `n_centers` clusters using your
     implementations of KMeans, Soft KMeans, and Gaussian Mixture Model. This function
-    is similar to one in scikit-learn `make_blobs`:
+    uses make_blobs and is implemented for you.
 
-    https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html
-
-    You can look at the documentation for inspiration but do not import it
-    to implement this function.
+    UPDATE: THIS FUNCTION IS IMPLEMENTED FOR YOU.
 
     The generated data should be a set of Gaussian blobs in n_features-dimensional
     space. The means (e.g. locations) of these blobs are generated randomly by you.
