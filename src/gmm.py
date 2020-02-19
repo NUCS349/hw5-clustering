@@ -1,5 +1,5 @@
 import numpy as np
-from code import KMeans
+from src import KMeans
 from scipy.stats import multivariate_normal
 
 class GMM():
