@@ -1,6 +1,6 @@
-from code import KMeans, GMM
+from src import KMeans, GMM
 import numpy as np
-from code import adjusted_mutual_info, generate_cluster_data
+from src import adjusted_mutual_info, generate_cluster_data
 import os
 import random
 from scipy.stats import multivariate_normal

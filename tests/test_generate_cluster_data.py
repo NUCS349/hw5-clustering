@@ -1,5 +1,5 @@
 import numpy as np
-from code import generate_cluster_data
+from src import generate_cluster_data
 
 def test_generate_cluster_data():
     n_samples = [2000, 20000]
