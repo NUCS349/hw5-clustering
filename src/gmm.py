@@ -9,7 +9,7 @@ class GMM():
         maximization.
 
         A useful tutorial:
-            http://cal.cs.illinois.edu/~johannes/research/EM%20derivations.pdf
+            https://campuspro-uploads.s3.us-west-2.amazonaws.com/63aa7cea-5e9c-4b62-96b7-8bbf3bc31b76/3a1d9101-8748-4e85-9830-4e45ffe1ca8d/EM%20derivations.pdf
 
         The EM algorithm for GMMs has two steps:
 
