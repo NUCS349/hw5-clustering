@@ -114,7 +114,8 @@ class GMM():
             2. Calculate the posterior probability for each point under each Gaussian
             3. Return the posterior probability (assignments).
         
-        This function should call your implementation of _log_likelihood (which should call
+        This function should call your implementation of of _posterior which in turn calls 
+        _log_likelihood (which should call
         multvariate_normal.logpdf). This should use the Gaussian parameter contained in
         self.means, self.covariance, and self.mixing_weights
 
