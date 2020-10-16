@@ -1,10 +1,11 @@
-# HW5: Clustering - EECS 349 @ NU
+# HW3: Clustering - EECS 349 @ NU
+
 **IMPORTANT: PUT YOUR NETID IN THE FILE** `netid` in the root directory of the assignment. 
 This is used to put the autograder output into Canvas. Please don't put someone else's netid 
 here, we will check.
 
 In this assignment, you will:
-- Implement K-Means
+- Implement k-Means
 - Implement GMM
 - Apply the two approaches to a dataset to discover patterns in an unsupervised way.
   
