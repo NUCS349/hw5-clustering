@@ -27,7 +27,16 @@ def test_kmeans_on_generated():
                     )
                     # make model and fit
                     model = KMeans(c)
+
+                    # Depending on how many random() calls the student code
+                    # makes, it can mess with the random state used to generate
+                    # data for subsequent tests and lead to an "impossible"
+                    # input distribution that can't achieve the desired
+                    # performance.  To avoid this, we save and restore the
+                    # random state so the student code can't interfere with it.
+                    rng_state = np.random.get_state()
                     model.fit(features)
+                    np.random.set_state(rng_state)
 
                     means = model.means
                     orderings = permutations(means)
@@ -59,7 +68,9 @@ def test_gmm_spec():
                         cluster_stds=.1
                     )
     gmm = GMM(2, 'spherical')
+    rng_state = np.random.get_state()
     gmm.fit(features)
+    np.random.set_state(rng_state)
 
     assert (hasattr(gmm, 'means'))
     assert (hasattr(gmm, 'covariances'))
@@ -73,7 +84,9 @@ def test_kmeans_spec():
                         cluster_stds=.1
                     )
     model = KMeans(2)
+    rng_state = np.random.get_state()
     model.fit(features)
+    np.random.set_state(rng_state)
     assert (hasattr(model, 'means'))
 
 def test_gmm_likelihood():
@@ -113,7 +126,11 @@ def _test_gmm_parameters(covariance_type):
                     )
                     # make model and fit
                     model = GMM(c, covariance_type=covariance_type)
+
+                    rng_state = np.random.get_state()
                     model.fit(features)
+                    np.random.set_state(rng_state)
+
                     covariances = model.covariances
                     for cov in covariances:
                         assert (np.abs(np.sqrt(cov) - s).mean() < 1e-1)
