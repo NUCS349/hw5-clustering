@@ -79,7 +79,7 @@ class GMM():
         # 5. While the log_likelihood is increasing significantly, or max_iterations has
         # not been reached, continue EM until convergence.
         n_iter = 0
-        while log_likelihood - prev_log_likelihood > 1e-4 and n_iter < self.max_iterations:
+        while abs(log_likelihood - prev_log_likelihood) > 1e-4 and n_iter < self.max_iterations:
             prev_log_likelihood = log_likelihood
 
             assignments = self._e_step(features)
